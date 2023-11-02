@@ -5,6 +5,7 @@ function Card() {
   const { data } = useContext(dataContext);
   const [price, setprice] = useState(0);
   const [count, setcount] = useState(0);
+  const discount = 10;
 
   //console.log(count);
   const total = (e) => {
@@ -64,7 +65,7 @@ function Card() {
                 </div>
                 <h6 className="pt-2">
                   <i className="bi bi-currency-dollar"></i>
-                  {data.price}
+                  {data.price.toFixed(2)}
                 </h6>
               </div>
               <button className="mt-5 RemoveButton" onClick={remove}>
@@ -79,15 +80,19 @@ function Card() {
 
       <div className="my-4">
         <div className="d-flex justify-content-between">
-          <h5 className="text-secondary">SUBTOTAL :</h5>
+          <h5 className="text-secondary">TOTAL :</h5>
           <h6>
             <i className="bi bi-currency-dollar"></i>
-            {price}
+            {price.toFixed(2)}
           </h6>
         </div>
         <div className="d-flex justify-content-between">
-          <h5 className="text-secondary">SHIPPING :</h5>
+          <h5 className="text-secondary h6">SHIPPING :</h5>
           <h6>FREE</h6>
+        </div>
+        <div className="d-flex justify-content-between">
+          <h5 className="text-secondary h6">DISCOUNT :</h5>
+          <h6>{discount}%</h6>
         </div>
       </div>
 
@@ -98,7 +103,7 @@ function Card() {
           <h5>SUBTOTAL :</h5>
           <h6>
             <i className="bi bi-currency-dollar"></i>
-            {price}
+            {((price * (100 - discount)) / 100).toFixed(2)}
           </h6>
         </div>
         <div className="text-end">
