@@ -4,12 +4,12 @@ import { dataContext } from "../App";
 function Card() {
   const { data } = useContext(dataContext);
   const [price, setprice] = useState(0);
-  const [count, setcount] = useState();
+  const [count, setcount] = useState(0);
 
   //console.log(count);
   const total = (e) => {
-    const count = e.target.value;
-    setprice(count * data.price);
+    setcount ( e.target.value);
+    setprice(e.target.value * data.price);
   };
   const remove = () => {
     setprice(0);
@@ -20,7 +20,7 @@ function Card() {
     <div className="col px-5 backgroundClr pt-5">
       <div className=" ">
         <div className="row ">
-          <div className="col-lg-3 col-12 text-center">
+          <div className="col-lg-3 col-12 text-center mb-2">
             <img src={data.thumbnail} className="img-fluid " alt="..." />
           </div>
           <div className="col-lg-6 col-6">
